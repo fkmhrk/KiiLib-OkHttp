@@ -1,0 +1,55 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+apply plugin: 'android-library'
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+   maven {
+      url "../m2repository"
+   }
+}
+ 
+uploadArchives {
+    repositories.mavenDeployer {
+        repository url: "file://$System.env.HOME/.m2/repository"
+        pom.version = '1.0.0'
+        pom.groupId = 'jp.fkmsoft.libs'
+        pom.artifactId = 'KiiLib-OkHttp'
+    }
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    sourceSets {
+        instrumentTest {
+            assets.srcDirs    = ["test/assets"]
+            res.srcDirs       = ["test/res"]
+            resources.srcDirs = ["test/src"]
+            java.srcDirs      = ["test/src"]
+        }
+    }
+}
+
+configurations {
+    compile.exclude group: 'org.json', module: 'json'
+    androidTestCompile.exclude group: 'org.json', module: 'json'
+}
+
+dependencies {
+    compile 'jp.fkmsoft.libs:KiiLib-Java-Core:3.0.0'
+    androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java:3.0.0'
+    androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java-BasicEntity:3.0.0'
+}
+
+

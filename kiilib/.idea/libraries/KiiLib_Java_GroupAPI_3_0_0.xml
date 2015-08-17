@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="KiiLib-Java-GroupAPI-3.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../m2repository/jp/fkmsoft/libs/KiiLib-Java-GroupAPI/3.0.0/KiiLib-Java-GroupAPI-3.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

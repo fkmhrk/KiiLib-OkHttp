@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kiilib.iml" filepath="$PROJECT_DIR$/kiilib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kiilib-android-volley.iml" filepath="$PROJECT_DIR$/../kiilib-android-volley.iml" />
+    </modules>
+  </component>
+</project>
