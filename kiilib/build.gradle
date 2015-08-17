@@ -47,6 +47,7 @@ configurations {
 }
 
 dependencies {
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'jp.fkmsoft.libs:KiiLib-Java-Core:3.0.0'
     androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java:3.0.0'
     androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java-BasicEntity:3.0.0'
