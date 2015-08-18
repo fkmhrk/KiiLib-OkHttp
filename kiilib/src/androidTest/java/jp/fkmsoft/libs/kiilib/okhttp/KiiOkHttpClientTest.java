@@ -14,18 +14,23 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 import jp.fkmsoft.libs.kiilib.client.KiiHTTPClient;
+import jp.fkmsoft.libs.kiilib.entities.KiiContext;
+import jp.fkmsoft.libs.kiilib.entities.test.TestKiiContext;
 
 /**
  * Testcase
  */
 public class KiiOkHttpClientTest extends AndroidTestCase {
     private HandlerThread mHandlerThread;
+    private KiiContext mKiiContext;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         mHandlerThread = new HandlerThread("Mock UI");
         mHandlerThread.start();
+
+        mKiiContext = new TestKiiContext(Constants.APP_ID, Constants.APP_KEY, KiiContext.SITE_JP);
     }
 
     @Override
@@ -37,11 +42,9 @@ public class KiiOkHttpClientTest extends AndroidTestCase {
     public void test_0000_POST() throws Exception {
         Handler handler = new Handler(mHandlerThread.getLooper());
 
-        KiiOkHttpClient client = new KiiOkHttpClient(new OkHttpClient(), handler);
+        KiiOkHttpClient client = new KiiOkHttpClient(new OkHttpClient(), mKiiContext, handler);
 
         Map<String, String> headers = new HashMap<>();
-        headers.put("x-kii-appid", Constants.APP_ID);
-        headers.put("x-kii-appkey", Constants.APP_KEY);
         JSONObject params = new JSONObject();
         params.put("username", "fkmtest");
         params.put("password", "123456");

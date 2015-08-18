@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 import jp.fkmsoft.libs.kiilib.client.KiiHTTPClient;
+import jp.fkmsoft.libs.kiilib.entities.KiiContext;
 
 /**
  * OkHttp Implementation
@@ -23,10 +24,12 @@ import jp.fkmsoft.libs.kiilib.client.KiiHTTPClient;
 public class KiiOkHttpClient implements KiiHTTPClient {
 
     private final OkHttpClient mClient;
+    private final KiiContext mContext;
     private final Handler mHandler;
 
-    public KiiOkHttpClient(OkHttpClient client, Handler handler) {
+    public KiiOkHttpClient(OkHttpClient client, KiiContext context, Handler handler) {
         mClient = client;
+        mContext = context;
         mHandler = handler;
     }
 
@@ -105,6 +108,8 @@ public class KiiOkHttpClient implements KiiHTTPClient {
     // region private
 
     private void setHeader(Request.Builder builder, Map<String, String> headers, String token) {
+        builder.addHeader("x-kii-appid", mContext.getAppId());
+        builder.addHeader("x-kii-appkey", mContext.getAppKey());
         if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 builder.addHeader(entry.getKey(), entry.getValue());

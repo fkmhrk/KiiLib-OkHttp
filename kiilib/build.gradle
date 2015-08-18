@@ -51,6 +51,7 @@ dependencies {
     compile 'jp.fkmsoft.libs:KiiLib-Java-Core:3.0.0'
     androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java:3.0.0'
     androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java-BasicEntity:3.0.0'
+    androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java-TestTools:3.0.0'
 }
 
 
