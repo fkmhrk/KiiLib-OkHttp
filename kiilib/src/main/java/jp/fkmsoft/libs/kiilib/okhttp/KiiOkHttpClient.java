@@ -45,10 +45,12 @@ public class KiiOkHttpClient implements KiiHTTPClient {
             builder.get();
             break;
         case Method.POST:
-            builder.post(RequestBody.create(MediaType.parse(contentType + ";charset=utf-8"), body.toString()));
+            builder.post(RequestBody.create(MediaType.parse(contentType + ";charset=utf-8"),
+                    (body == null) ? "" : body.toString()));
             break;
         case Method.PUT:
-            builder.put(RequestBody.create(MediaType.parse(contentType + ";charset=utf-8"), body.toString()));
+            builder.put(RequestBody.create(MediaType.parse(contentType + ";charset=utf-8"),
+                    (body == null) ? "" : body.toString()));
             break;
         case Method.DELETE:
             builder.delete();
